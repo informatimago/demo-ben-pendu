@@ -1,9 +1,70 @@
 Ah ah ! Premier problème !
 
-Il faut toujours commencer par le main (ou "un" main), de façon à pouvoir
-à chaque moment compiler et exécuter le programme, pour tester chaque fonction.
+Il faut toujours commencer par le main (ou "un" main), de façon à
+pouvoir à chaque moment compiler et exécuter le programme, pour tester
+chaque fonction.
 
-En gros, tu écris une méthode, et tout de suite, tu la teste en écrivant une petite méthode de test.
+En gros, tu écris une méthode, et tout de suite, tu la teste en
+écrivant une petite méthode de test.
 
-Par exemple, la première version du programme aurait pu être :
+Par exemple, la première version du programme aurait pu être
+pendu1/pendu1.java.  Il y a un main et une méthode de test, qui valide
+que ma méthode alphabet() retourne bien un alphabet.  Je peux l'exécuter
+immédiatement, et tout de suite voir si me suis trompé quelque part.
 
+
+Note aussi que je suis faignant.  Je préfère utiliser une structure de
+donnée de plus haut niveau (la classe String) plutôt que le char[]
+pour représenter l'alphabet.  Ça me permet d'écrire directement
+l'alphabet sous forme d'un literal chaîne.  Ainsi, si je veux changer
+les lettres de l'alphabet, en ajouter ou en enlever, c'est plus facile.
+
+L'inconvénient d'utiliser char[], c'est que tu es obligé de
+pré-allouer ces tableaux, avec une taille fixe, et si tu te trompe, ça
+donnera des exceptions.  Il vaut mieux écrire les méthodes dans un
+style plus fonctionnel, en leur laissant allouer et retourner les
+objets elles-mêmes.
+
+Il faut utiliser des conventions cohérentes !  Si tu commence avec des
+minuscules pour les noms de méthodes, il ne faut pas passer au
+majuscules !
+
+Pour les dessins de pendus, c'est des données. Alors il vaudrait
+mieux, soit les garder dans des fichiers "resources", soit les
+initialiser avec un literal, et donc utiliser ici des tableaux:
+
+    String[][] states={{"    ___________       ",
+                        "    |          |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "----------------------"},
+                       {"    ___________       ",
+                        "    |          |      ",
+                        "   | |         |      ",
+                        "    -          |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "               |      ",
+                        "----------------------"},
+                        // …
+                        };
+
+Ça permet alors d'afficher un dessin de pendu trés facilement avec une
+boucle :
+
+  public static void dessineEtat(int state){
+    for(String line:states[state]){
+      System.out.println(line);}
+  }
+
+Et encore une fois, en utilisant des données, on évite de mettre en
+dur le nombre d'états possibles.
