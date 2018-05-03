@@ -1,0 +1,9 @@
+Ah ah ! Premier problème !
+
+Il faut toujours commencer par le main (ou "un" main), de façon à pouvoir
+à chaque moment compiler et exécuter le programme, pour tester chaque fonction.
+
+En gros, tu écris une méthode, et tout de suite, tu la teste en écrivant une petite méthode de test.
+
+Par exemple, la première version du programme aurait pu être :
+
